@@ -189,8 +189,6 @@ func TestTireDupliatePath(t *testing.T) {
 		if recv != nil {
 			t.Fatalf("panic inserting route '%s': %v", route, recv)
 		}
-
-		// Add again
 		recv = catchPanic(func() {
 			tire.addRoute(route, nil)
 		})
@@ -198,8 +196,6 @@ func TestTireDupliatePath(t *testing.T) {
 			t.Fatalf("no panic while inserting duplicate route '%s", route)
 		}
 	}
-
-	// printChildren(tire, "")
 
 	checkRequests(t, tire, testRequests{
 		{"/", false, "/", nil},

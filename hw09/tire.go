@@ -1,7 +1,3 @@
-// Copyright 2013 Julien Schmidt. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be found
-// in the LICENSE file.
-
 package resthttp
 
 import (
@@ -26,17 +22,11 @@ func longestCommonPrefix(str1, str2 string) int {
 	return i
 }
 
-// Search for a wildcard segment and check the name for invalid characters.
-// Returns -1 as index, if no wildcard was found.
 func findMatched(path string) (matchedFlag string, i int, valid bool) {
-	// Find start
 	for start, c := range []byte(path) {
-		// A wildcard starts with ':' (param) or '*' (catch-all)
 		if c != ':' && c != '*' {
 			continue
 		}
-
-		// Find end and check for invalid characters
 		valid = true
 		for end, c := range []byte(path[start+1:]) {
 			switch c {
@@ -65,7 +55,7 @@ func ParamNum(path string) uint16 {
 type bType uint8
 
 const (
-	static bType = iota // default
+	static bType = iota
 	root
 	param
 	catchAll
@@ -81,7 +71,6 @@ type node struct {
 	handle     Handle
 }
 
-// Increments priority of the given child and reorders if necessary
 func (n *node) incrementChildPrio(location int) int {
 	cs := n.children
 	cs[location].priority++
@@ -104,8 +93,6 @@ func (n *node) incrementChildPrio(location int) int {
 	return nLoc
 }
 
-// addRoute adds a node with the given handle to the path.
-// Not concurrency-safe!
 func (n *node) addRoute(path string, handle Handle) {
 	fullPath := path
 	n.priority++
@@ -119,9 +106,6 @@ func (n *node) addRoute(path string, handle Handle) {
 
 walk:
 	for {
-		// Find the longest common prefix.
-		// This also implies that the common prefix contains no ':' or '*'
-		// since the existing key can't contain those chars.
 		i := longestCommonPrefix(path, n.path)
 
 		// Split edge
@@ -144,7 +128,6 @@ walk:
 			n.matchChild = false
 		}
 
-		// Make new node a child of this node
 		if i < len(path) {
 			path = path[i:]
 
@@ -256,9 +239,6 @@ func (n *node) insertChild(path, fullPath string, handle Handle) {
 			n.children = []*node{child}
 			n = child
 			n.priority++
-
-			// If the path doesn't end with the wildcard, then there
-			// will be another non-wildcard subpath starting with '/'
 			if len(wildcard) < len(path) {
 				path = path[len(wildcard):]
 				child := &node{
@@ -269,7 +249,6 @@ func (n *node) insertChild(path, fullPath string, handle Handle) {
 				continue
 			}
 
-			// Otherwise we're done. Insert the handle in the new leaf
 			n.handle = handle
 			return
 		}
@@ -318,11 +297,6 @@ func (n *node) insertChild(path, fullPath string, handle Handle) {
 	n.handle = handle
 }
 
-// Returns the handle registered with the given path (key). The values of
-// wildcards are saved to a map.
-// If no handle can be found, a TSR (trailing slash redirect) recommendation is
-// made if a handle exists with an extra (without the) trailing slash for the
-// given path.
 func (n *node) getValue(path string, params func() *Params) (handle Handle, ps *Params, tsr bool) {
 walk: // Outer loop for walking the tree
 	for {
@@ -331,9 +305,6 @@ walk: // Outer loop for walking the tree
 			if path[:len(prefix)] == prefix {
 				path = path[len(prefix):]
 
-				// If this node does not have a wildcard (param or catchAll)
-				// child, we can just look up the next child node and continue
-				// to walk down the tree
 				if !n.matchChild {
 					idxc := path[0]
 					for i, c := range []byte(n.index) {
@@ -343,9 +314,6 @@ walk: // Outer loop for walking the tree
 						}
 					}
 
-					// Nothing found.
-					// We can recommend to redirect to the same URL without a
-					// trailing slash if a leaf exists for that path.
 					tsr = (path == "/" && n.handle != nil)
 					return
 				}
@@ -365,7 +333,6 @@ walk: // Outer loop for walking the tree
 						if ps == nil {
 							ps = params()
 						}
-						// Expand slice within preallocated capacity
 						i := len(*ps)
 						*ps = (*ps)[:i+1]
 						(*ps)[i] = Param{
@@ -374,7 +341,6 @@ walk: // Outer loop for walking the tree
 						}
 					}
 
-					// We need to go deeper!
 					if end < len(path) {
 						if len(n.children) > 0 {
 							path = path[end:]
@@ -390,8 +356,6 @@ walk: // Outer loop for walking the tree
 					if handle = n.handle; handle != nil {
 						return
 					} else if len(n.children) == 1 {
-						// No handle found. Check if a handle for this path + a
-						// trailing slash exists for TSR recommendation
 						n = n.children[0]
 						tsr = (n.path == "/" && n.handle != nil) || (n.path == "" && n.index == "/")
 					}
@@ -427,16 +391,11 @@ walk: // Outer loop for walking the tree
 				return
 			}
 
-			// If there is no handle for this route, but this route has a
-			// wildcard child, there must be a handle for this path with an
-			// additional trailing slash
 			if path == "/" && n.matchChild && n.nType != root {
 				tsr = true
 				return
 			}
 
-			// No handle found. Check if a handle for this path + a
-			// trailing slash exists for trailing slash recommendation
 			for i, c := range []byte(n.index) {
 				if c == '/' {
 					n = n.children[i]
@@ -457,15 +416,9 @@ walk: // Outer loop for walking the tree
 	}
 }
 
-// Makes a case-insensitive lookup of the given path and tries to find a handler.
-// It can optionally also fix trailing slashes.
-// It returns the case-corrected path and a bool indicating whether the lookup
-// was successful.
 func (n *node) findCaseInsensitivePath(path string, fixTrailingSlash bool) (fixedPath string, found bool) {
 	const stackBufSize = 128
 
-	// Use a static sized buffer on the stack in the common case.
-	// If the path is too long, allocate a buffer on the heap instead.
 	buf := make([]byte, 0, stackBufSize)
 	if l := len(path) + 1; l > stackBufSize {
 		buf = make([]byte, 0, l)
@@ -481,7 +434,6 @@ func (n *node) findCaseInsensitivePath(path string, fixTrailingSlash bool) (fixe
 	return string(ciPath), ciPath != nil
 }
 
-// Shift bytes in array by n bytes left
 func shiftNRuneBytes(rb [4]byte, n int) [4]byte {
 	switch n {
 	case 0:
@@ -509,9 +461,6 @@ walk: // Outer loop for walking the tree
 		ciPath = append(ciPath, n.path...)
 
 		if len(path) > 0 {
-			// If this node does not have a wildcard (param or catchAll) child,
-			// we can just look up the next child node and continue to walk down
-			// the tree
 			if !n.matchChild {
 				// Skip rune bytes already processed
 				rb = shiftNRuneBytes(rb, npLen)

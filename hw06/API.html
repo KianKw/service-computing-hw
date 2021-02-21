@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>rxgo - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<link rel="stylesheet" href="/lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package rxgo
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/KianKw/rxgo"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package rxgo provides basic supporting to reactiveX of the Go.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="#FlowableError">type FlowableError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FlowableError.Error">func (e FlowableError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#InnerObserver">type InnerObserver</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#InnerObserver.OnCompleted">func (o InnerObserver) OnCompleted()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#InnerObserver.OnError">func (o InnerObserver) OnError(e error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#InnerObserver.OnNext">func (o InnerObserver) OnNext(x interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#Observable">type Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Empty">func Empty() *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#From">func From(items interface{}) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Generator">func Generator(sf sourceFunc) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Just">func Just(items ...interface{}) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Never">func Never() *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Range">func Range(start, end int) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Start">func Start(f interface{}) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Throw">func Throw(e error) *Observable</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Debounce">func (parent *Observable) Debounce(t time.Duration) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Debug">func (o *Observable) Debug(debug bool) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Distinct">func (parent *Observable) Distinct() (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.ElementAt">func (parent *Observable) ElementAt(id int) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Filter">func (parent *Observable) Filter(f interface{}) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.First">func (parent *Observable) First() (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.FlatMap">func (parent *Observable) FlatMap(f interface{}) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Last">func (parent *Observable) Last() (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Map">func (parent *Observable) Map(f interface{}) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.ObserveOn">func (o *Observable) ObserveOn(t ThreadModel) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Sample">func (parent *Observable) Sample(timespan time.Duration) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.SetBufferLen">func (o *Observable) SetBufferLen(length uint) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.SetMonitor">func (o *Observable) SetMonitor(observer Observer) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Skip">func (parent *Observable) Skip(num int) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.SkipLast">func (parent *Observable) SkipLast(num int) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Subscribe">func (o *Observable) Subscribe(ob interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.SubscribeOn">func (o *Observable) SubscribeOn(t ThreadModel) *Observable</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.Take">func (parent *Observable) Take(num int) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.TakeLast">func (parent *Observable) TakeLast(num int) (o *Observable)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Observable.TransformOp">func (parent *Observable) TransformOp(tf transformFunc) (o *Observable)</a></dd>
+				
+			
+				
+				<dd><a href="#Observer">type Observer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ObserverMonitor">type ObserverMonitor</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.GetObserverContext">func (o ObserverMonitor) GetObserverContext() (c context.Context)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.OnCompleted">func (o ObserverMonitor) OnCompleted()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.OnConnected">func (o ObserverMonitor) OnConnected()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.OnError">func (o ObserverMonitor) OnError(e error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.OnNext">func (o ObserverMonitor) OnNext(x interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ObserverMonitor.Unsubscribe">func (o ObserverMonitor) Unsubscribe()</a></dd>
+				
+			
+				
+				<dd><a href="#ObserverWithContext">type ObserverWithContext</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ThreadModel">type ThreadModel</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/KianKw/rxgo/filtering.go">filtering.go</a>
+			
+				<a href="/src/github.com/KianKw/rxgo/generators.go">generators.go</a>
+			
+				<a href="/src/github.com/KianKw/rxgo/rxgo.go">rxgo.go</a>
+			
+				<a href="/src/github.com/KianKw/rxgo/transforms.go">transforms.go</a>
+			
+				<a href="/src/github.com/KianKw/rxgo/utility.go">utility.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+default buffer of channels
+</p>
+
+				<pre>var <span id="BufferLen">BufferLen</span> <a href="/pkg/builtin/#uint">uint</a> = 128</pre>
+			
+				<p>
+if user function throw EoFlow, the Observeable will stop and close it
+</p>
+
+				<pre>var <span id="ErrEoFlow">ErrEoFlow</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;End of Flow!&#34;)</pre>
+			
+				<p>
+operator func error
+</p>
+
+				<pre>var <span id="ErrFuncFlip">ErrFuncFlip</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;Operator Func Error&#34;)</pre>
+			
+				<p>
+Subscribe paeameter error
+</p>
+
+				<pre>var <span id="ErrFuncOnNext">ErrFuncOnNext</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;Subscribe paramteter needs func(x anytype) or Observer or ObserverWithContext&#34;)</pre>
+			
+				
+				<pre>var <span id="ErrIndex">ErrIndex</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;The index is illegal!&#34;)</pre>
+			
+				
+				<pre>var <span id="ErrInput">ErrInput</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;Input Error!&#34;)</pre>
+			
+				<p>
+if user function throw SkipItem, the Observeable will skip current item
+</p>
+
+				<pre>var <span id="ErrSkipItem">ErrSkipItem</span> = <a href="/pkg/errors/">errors</a>.<a href="/pkg/errors/#New">New</a>(&#34;Skip item!&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="FlowableError">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=1133:1200#L27">FlowableError</a>
+				<a class="permalink" href="#FlowableError">&#xb6;</a>
+			</h2>
+			<p>
+Error that can flow to subscriber or user function which processes error as an input
+</p>
+
+			<pre>type FlowableError struct {
+<span id="FlowableError.Err"></span>    Err      <a href="/pkg/builtin/#error">error</a>
+<span id="FlowableError.Elements"></span>    Elements interface{}
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FlowableError.Error">func (FlowableError) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=1202:1239#L32">Error</a>
+					<a class="permalink" href="#FlowableError.Error">&#xb6;</a>
+				</h3>
+				<pre>func (e <a href="#FlowableError">FlowableError</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="InnerObserver">type <a href="/src/github.com/KianKw/rxgo/utility.go?s=226:268#L3">InnerObserver</a>
+				<a class="permalink" href="#InnerObserver">&#xb6;</a>
+			</h2>
+			<p>
+Test Observer
+</p>
+
+			<pre>type InnerObserver struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InnerObserver.OnCompleted">func (InnerObserver) <a href="/src/github.com/KianKw/rxgo/utility.go?s=481:517#L17">OnCompleted</a>
+					<a class="permalink" href="#InnerObserver.OnCompleted">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#InnerObserver">InnerObserver</a>) OnCompleted()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="InnerObserver.OnError">func (InnerObserver) <a href="/src/github.com/KianKw/rxgo/utility.go?s=402:441#L13">OnError</a>
+					<a class="permalink" href="#InnerObserver.OnError">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#InnerObserver">InnerObserver</a>) OnError(e <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="InnerObserver.OnNext">func (InnerObserver) <a href="/src/github.com/KianKw/rxgo/utility.go?s=310:354#L9">OnNext</a>
+					<a class="permalink" href="#InnerObserver.OnNext">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#InnerObserver">InnerObserver</a>) OnNext(x interface{})</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Observable">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=3379:4199#L114">Observable</a>
+				<a class="permalink" href="#Observable">&#xb6;</a>
+			</h2>
+			<p>
+An Observable is a &#39;collection of items that arrive over time&#39;. Observables can be used to model asynchronous events.
+Observables can also be chained by operators to transformed, combined those items
+The Observable&#39;s operators, by default, run with a channel size of 128 elements except that the source (first) observable has no buffer
+</p>
+
+			<pre>type Observable struct {
+<span id="Observable.Name"></span>    Name <a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Empty">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=5582:5606#L230">Empty</a>
+					<a class="permalink" href="#Empty">&#xb6;</a>
+				</h3>
+				<pre>func Empty() *<a href="#Observable">Observable</a></pre>
+				<p>
+create an Observable that emits no items but terminates normally
+</p>
+
+				
+				
+			
+				
+				<h3 id="From">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=3483:3523#L137">From</a>
+					<a class="permalink" href="#From">&#xb6;</a>
+				</h3>
+				<pre>func From(items interface{}) *<a href="#Observable">Observable</a></pre>
+				<p>
+convert Slice, Channel, and Observable into Observables
+</p>
+
+				
+				
+			
+				
+				<h3 id="Generator">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=821:862#L22">Generator</a>
+					<a class="permalink" href="#Generator">&#xb6;</a>
+				</h3>
+				<pre>func Generator(sf sourceFunc) *<a href="#Observable">Observable</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="Just">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=3022:3065#L117">Just</a>
+					<a class="permalink" href="#Just">&#xb6;</a>
+				</h3>
+				<pre>func Just(items ...interface{}) *<a href="#Observable">Observable</a></pre>
+				<p>
+Just creates an Observable with the provided item(s).
+</p>
+
+				
+				
+			
+				
+				<h3 id="Never">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=5250:5274#L215">Never</a>
+					<a class="permalink" href="#Never">&#xb6;</a>
+				</h3>
+				<pre>func Never() *<a href="#Observable">Observable</a></pre>
+				<p>
+create an Observable that emits no items and does not terminate.
+It is important for combining with other Observables
+</p>
+
+				
+				
+			
+				
+				<h3 id="Range">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=2440:2478#L93">Range</a>
+					<a class="permalink" href="#Range">&#xb6;</a>
+				</h3>
+				<pre>func Range(start, end <a href="/pkg/builtin/#int">int</a>) *<a href="#Observable">Observable</a></pre>
+				<p>
+Range creates an Observable that emits a particular range of sequential integers.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Start">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=1343:1380#L40">Start</a>
+					<a class="permalink" href="#Start">&#xb6;</a>
+				</h3>
+				<pre>func Start(f interface{}) *<a href="#Observable">Observable</a></pre>
+				<p>
+creates an Observable with the provided item(s) producing by the function `func()  (val anytype, end bool)`
+</p>
+
+				
+				
+			
+				
+				<h3 id="Throw">func <a href="/src/github.com/KianKw/rxgo/generators.go?s=5823:5854#L240">Throw</a>
+					<a class="permalink" href="#Throw">&#xb6;</a>
+				</h3>
+				<pre>func Throw(e <a href="/pkg/builtin/#error">error</a>) *<a href="#Observable">Observable</a></pre>
+				<p>
+create an Observable that emits no items and terminates with an error
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Observable.Debounce">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=834:901#L28">Debounce</a>
+					<a class="permalink" href="#Observable.Debounce">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Debounce(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Duration">Duration</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Debounce only emit an item from an Observable if a particular timespan has passed without it emitting another item
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Debug">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=6309:6359#L249">Debug</a>
+					<a class="permalink" href="#Observable.Debug">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) Debug(debug <a href="/pkg/builtin/#bool">bool</a>) *<a href="#Observable">Observable</a></pre>
+				<p>
+set a innerMonitor for debug
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Distinct">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=1324:1376#L45">Distinct</a>
+					<a class="permalink" href="#Observable.Distinct">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Distinct() (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Distinct suppress duplicate items emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.ElementAt">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=1791:1850#L62">ElementAt</a>
+					<a class="permalink" href="#Observable.ElementAt">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) ElementAt(id <a href="/pkg/builtin/#int">int</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+ElementAt emit only item n emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Filter">func (*Observable) <a href="/src/github.com/KianKw/rxgo/transforms.go?s=4979:5042#L195">Filter</a>
+					<a class="permalink" href="#Observable.Filter">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Filter(f interface{}) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Filter `func(x anytype) bool` filters items in the original Observable and returns
+a new Observable with the filtered items.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.First">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=2311:2360#L79">First</a>
+					<a class="permalink" href="#Observable.First">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) First() (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+First emit only the first item (or the first item that meets some condition) emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.FlatMap">func (*Observable) <a href="/src/github.com/KianKw/rxgo/transforms.go?s=3607:3671#L130">FlatMap</a>
+					<a class="permalink" href="#Observable.FlatMap">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) FlatMap(f interface{}) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+FlatMap maps each item in Observable by the function with `func(x anytype) (o *Observable) ` and
+returns a new Observable with merged observables appling on each items.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Last">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=2816:2864#L96">Last</a>
+					<a class="permalink" href="#Observable.Last">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Last() (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Last emit only the last item (or the last item that meets some condition) emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Map">func (*Observable) <a href="/src/github.com/KianKw/rxgo/transforms.go?s=2527:2587#L84">Map</a>
+					<a class="permalink" href="#Observable.Map">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Map(f interface{}) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Map maps each item in Observable by the function with `func(x anytype) anytype` and
+returns a new Observable with applied items.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.ObserveOn">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=4627:4684#L162">ObserveOn</a>
+					<a class="permalink" href="#Observable.ObserveOn">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) ObserveOn(t <a href="#ThreadModel">ThreadModel</a>) *<a href="#Observable">Observable</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Observable.Sample">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=3310:3382#L113">Sample</a>
+					<a class="permalink" href="#Observable.Sample">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Sample(timespan <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Duration">Duration</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Sample emit the most recent item emitted by an Observable within periodic time intervals.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.SetBufferLen">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=6036:6094#L237">SetBufferLen</a>
+					<a class="permalink" href="#Observable.SetBufferLen">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) SetBufferLen(length <a href="/pkg/builtin/#uint">uint</a>) *<a href="#Observable">Observable</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Observable.SetMonitor">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=6179:6241#L243">SetMonitor</a>
+					<a class="permalink" href="#Observable.SetMonitor">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) SetMonitor(observer <a href="#Observer">Observer</a>) *<a href="#Observable">Observable</a></pre>
+				<p>
+set a observer to monite items in data stream
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Skip">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=3827:3882#L131">Skip</a>
+					<a class="permalink" href="#Observable.Skip">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Skip(num <a href="/pkg/builtin/#int">int</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Skip suppress the first n items emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.SkipLast">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=4293:4352#L148">SkipLast</a>
+					<a class="permalink" href="#Observable.SkipLast">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) SkipLast(num <a href="/pkg/builtin/#int">int</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+SkipLast suppress the last n items emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.Subscribe">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=4732:4778#L168">Subscribe</a>
+					<a class="permalink" href="#Observable.Subscribe">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) Subscribe(ob interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Observable.SubscribeOn">func (*Observable) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=4535:4594#L157">SubscribeOn</a>
+					<a class="permalink" href="#Observable.SubscribeOn">&#xb6;</a>
+				</h3>
+				<pre>func (o *<a href="#Observable">Observable</a>) SubscribeOn(t <a href="#ThreadModel">ThreadModel</a>) *<a href="#Observable">Observable</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Observable.Take">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=4766:4821#L165">Take</a>
+					<a class="permalink" href="#Observable.Take">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) Take(num <a href="/pkg/builtin/#int">int</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+Take emit only the first n items emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.TakeLast">func (*Observable) <a href="/src/github.com/KianKw/rxgo/filtering.go?s=5254:5313#L183">TakeLast</a>
+					<a class="permalink" href="#Observable.TakeLast">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) TakeLast(num <a href="/pkg/builtin/#int">int</a>) (o *<a href="#Observable">Observable</a>)</pre>
+				<p>
+TakeLast emit only the last n items emitted by an Observable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Observable.TransformOp">func (*Observable) <a href="/src/github.com/KianKw/rxgo/transforms.go?s=1846:1917#L62">TransformOp</a>
+					<a class="permalink" href="#Observable.TransformOp">&#xb6;</a>
+				</h3>
+				<pre>func (parent *<a href="#Observable">Observable</a>) TransformOp(tf transformFunc) (o *<a href="#Observable">Observable</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Observer">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=1394:1475#L37">Observer</a>
+				<a class="permalink" href="#Observer">&#xb6;</a>
+			</h2>
+			<p>
+Observer subscribes to an Observable. Then that observer reacts to whatever item or sequence of items the Observable emits.
+</p>
+
+			<pre>type Observer interface {
+    OnNext(x interface{})
+    OnError(<a href="/pkg/builtin/#error">error</a>)
+    OnCompleted()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ObserverMonitor">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=1760:2062#L52">ObserverMonitor</a>
+				<a class="permalink" href="#ObserverMonitor">&#xb6;</a>
+			</h2>
+			<p>
+Create observer quickly with function
+</p>
+
+			<pre>type ObserverMonitor struct {
+<span id="ObserverMonitor.Next"></span>    Next              func(x interface{})
+<span id="ObserverMonitor.Error"></span>    Error             func(<a href="/pkg/builtin/#error">error</a>)
+<span id="ObserverMonitor.Completed"></span>    Completed         func()
+<span id="ObserverMonitor.Context"></span>    Context           func() <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a> <span class="comment">// an observer context musit gived when observables before connected</span>
+<span id="ObserverMonitor.AfterConnected"></span>    AfterConnected    func()
+<span id="ObserverMonitor.CancelObservables"></span>    CancelObservables <a href="/pkg/context/">context</a>.<a href="/pkg/context/#CancelFunc">CancelFunc</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ObserverMonitor.GetObserverContext">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2323:2388#L79">GetObserverContext</a>
+					<a class="permalink" href="#ObserverMonitor.GetObserverContext">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) GetObserverContext() (c <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObserverMonitor.OnCompleted">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2235:2273#L73">OnCompleted</a>
+					<a class="permalink" href="#ObserverMonitor.OnCompleted">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) OnCompleted()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObserverMonitor.OnConnected">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2470:2508#L86">OnConnected</a>
+					<a class="permalink" href="#ObserverMonitor.OnConnected">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) OnConnected()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObserverMonitor.OnError">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2151:2192#L67">OnError</a>
+					<a class="permalink" href="#ObserverMonitor.OnError">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) OnError(e <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObserverMonitor.OnNext">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2064:2110#L61">OnNext</a>
+					<a class="permalink" href="#ObserverMonitor.OnNext">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) OnNext(x interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObserverMonitor.Unsubscribe">func (ObserverMonitor) <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=2568:2606#L92">Unsubscribe</a>
+					<a class="permalink" href="#ObserverMonitor.Unsubscribe">&#xb6;</a>
+				</h3>
+				<pre>func (o <a href="#ObserverMonitor">ObserverMonitor</a>) Unsubscribe()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ObserverWithContext">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=1539:1717#L44">ObserverWithContext</a>
+				<a class="permalink" href="#ObserverWithContext">&#xb6;</a>
+			</h2>
+			<p>
+Make Observables Context and support unsubscribe operation
+</p>
+
+			<pre>type ObserverWithContext interface {
+    <a href="#Observer">Observer</a>
+    GetObserverContext() <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a> <span class="comment">// you must create a cancelable context here when unsubscribe</span>
+    OnConnected()
+    Unsubscribe()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ThreadModel">type <a href="/src/github.com/KianKw/rxgo/rxgo.go?s=305:326#L6">ThreadModel</a>
+				<a class="permalink" href="#ThreadModel">&#xb6;</a>
+			</h2>
+			
+			<pre>type ThreadModel <a href="/pkg/builtin/#uint">uint</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="ThreadingDefault">ThreadingDefault</span>   <a href="#ThreadModel">ThreadModel</a> = <a href="/pkg/builtin/#iota">iota</a> <span class="comment">// one observable served by one goroutine</span>
+    <span id="ThreadingIO">ThreadingIO</span>                           <span class="comment">// each item served by one goroutine</span>
+    <span id="ThreadingComputing">ThreadingComputing</span>                    <span class="comment">// each item served by one goroutine in a limited group</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.10.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="/lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="/lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="/lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.10";</script>
+<script type="text/javascript" src="/lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+
